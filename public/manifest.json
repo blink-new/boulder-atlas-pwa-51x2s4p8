@@ -1,0 +1,42 @@
+{
+  "name": "Boulder Atlas - Outdoor Bouldering PWA",
+  "short_name": "Boulder Atlas",
+  "description": "Discover and share boulder problems around the world",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f4f0",
+  "theme_color": "#8b5f3f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports", "outdoor", "travel"],
+  "screenshots": [
+    {
+      "src": "/screenshots/map-view.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Boulder map view showing climbing locations"
+    },
+    {
+      "src": "/screenshots/boulder-detail.png", 
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Detailed boulder information with photos and grades"
+    }
+  ],
+  "features": [
+    "World map of boulder locations",
+    "Boulder submission with photos and topo diagrams",
+    "AR topo viewing",
+    "Dual grading system (submitter + community)",
+    "Outdoor adventure aesthetic"
+  ]
+}

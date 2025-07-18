@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Earthy climbing-inspired color palette */
+    --background: 27 10% 95%; /* warm stone */
+    --foreground: 25 15% 15%; /* dark earth */
+    
+    --card: 30 15% 92%; /* light sandstone */
+    --card-foreground: 25 15% 15%;
+    
+    --popover: 30 15% 92%;
+    --popover-foreground: 25 15% 15%;
+    
+    --primary: 25 35% 45%; /* rich earth brown */
+    --primary-foreground: 30 15% 95%;
+    
+    --secondary: 35 25% 75%; /* warm sand */
+    --secondary-foreground: 25 15% 25%;
+    
+    --muted: 35 20% 85%; /* light clay */
+    --muted-foreground: 25 10% 45%;
+    
+    --accent: 20 45% 55%; /* terracotta */
+    --accent-foreground: 30 15% 95%;
+    
+    --destructive: 0 65% 55%; /* canyon red */
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 30 20% 82%;
+    --input: 30 20% 88%;
+    --ring: 25 35% 45%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom bouldering colors */
+    --boulder-moss: 90 25% 35%; /* moss green */
+    --boulder-granite: 220 8% 55%; /* granite gray */
+    --boulder-sunset: 15 80% 65%; /* sunset orange */
+    --boulder-forest: 145 30% 25%; /* forest green */
+    --boulder-chalk: 0 0% 95%; /* chalk white */
+  }
+  
+  .dark {
+    --background: 25 15% 8%; /* dark stone */
+    --foreground: 30 15% 95%;
+    
+    --card: 25 15% 10%;
+    --card-foreground: 30 15% 95%;
+    
+    --popover: 25 15% 10%;
+    --popover-foreground: 30 15% 95%;
+    
+    --primary: 25 35% 65%; /* lighter earth for dark mode */
+    --primary-foreground: 25 15% 8%;
+    
+    --secondary: 25 15% 18%;
+    --secondary-foreground: 30 15% 85%;
+    
+    --muted: 25 15% 15%;
+    --muted-foreground: 30 10% 65%;
+    
+    --accent: 20 45% 65%;
+    --accent-foreground: 25 15% 8%;
+    
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 25 15% 18%;
+    --input: 25 15% 18%;
+    --ring: 25 35% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit;
+  }
+}
+
+@layer components {
+  .boulder-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+  
+  .nature-texture {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--accent) / 0.1) 0%, transparent 50%);
+  }
+  
+  .climbing-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .grade-badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border;
+  }
+  
+  .v-grade {
+    @apply grade-badge bg-boulder-sunset/10 text-orange-700 border-orange-200;
+  }
+  
+  .font-grade {
+    @apply grade-badge bg-boulder-forest/10 text-green-700 border-green-200;
+  }
+
+  /* Mobile-first responsive utilities */
+  .container {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Text clamp utilities for better mobile display */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.7);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Touch targets should be at least 44px */
+  .btn-touch {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing on mobile */
+  .mobile-spacing {
+    @apply space-y-4;
+  }
+
+  /* Modal adjustments for mobile */
+  .modal-mobile {
+    @apply max-h-[90vh] overflow-y-auto;
+  }
+
+  /* Form inputs with better touch */
+  input, textarea, select {
+    @apply text-base; /* Prevents zoom on iOS */
+  }
+
+  /* Mobile card full height adjustments */
+  .mobile-fullscreen {
+    @apply fixed inset-0 z-50 bg-background;
+  }
+
+  /* Mobile header spacing */
+  .mobile-header-spacing {
+    @apply pt-20 pb-24;
+  }
+}
+
+/* Desktop improvements */
+@media (min-width: 769px) {
+  /* Desktop card margins from header */
+  .desktop-card-spacing {
+    @apply mt-6;
+  }
+
+  /* Desktop boulder details with proper spacing */
+  .desktop-boulder-modal {
+    @apply mt-8 mb-8;
+  }
+
+  /* Desktop profile layout adjustments */
+  .desktop-profile-layout {
+    @apply min-h-[400px];
+  }
+
+  /* Settings panel height adjustment */
+  .desktop-settings-height {
+    @apply h-fit;
+  }
+
+  /* Full profile space when no settings */
+  .profile-full-width {
+    @apply lg:col-span-3;
+  }
+
+  /* Profile with settings */
+  .profile-with-settings {
+    @apply lg:col-span-2;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
